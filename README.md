@@ -1,8 +1,11 @@
-# ConcurrentHTTPConnection
+# Concurrent HTTP Connection
 
-a simple http client application that returns a daily ranking of % performance from 5,000 stocks by connectiong Yahoo public API
+A simple http client application that returns a daily ranking of % performance from 5,000 stocks by connectiong world trading data (https://www.worldtradingdata.com/)
 
-# What this does
+## Architecture Overview
+
+
+## What this does
 
 1.	Load 5,000 target stocks as array
 2.	Divide into 25 groups (200 stocks per group)
@@ -10,25 +13,16 @@ a simple http client application that returns a daily ranking of % performance f
 4.	Parse response json data for furthre culcuration
 5.	Compute daily percent return
 6.	Create a text file and write a report ranking of daily returns order by higher returns
-	
 
-# Directory
-```
-├── 1_Java
-│   ├── Main.java // Main Code for Java
-│   ├── StockList.java
-│   └── org // library for handling JSON from JDK
-│       └── json
-│           ├── JSON.java
-│           ├── JSONArray.java
-│           ├── JSONException.java
-│           ├── JSONObject.java
-│           ├── JSONStringer.java
-│           └── JSONTokener.java
-├── 2_Swift
-│   ├── main.swift // Main Code for Swift
-│   └── stocks.swift
-└── 3_Python
-    ├── Main.py // Main code for Python
-    └── StockList.py
-```
+## What is cuncurrent connection and Why?
+
+## Pre-requirements
+
+## How to run?
+
+## Tech-Stacks
+
+* Python
+  * Pandas
+  * Jupitor Note
+* R
