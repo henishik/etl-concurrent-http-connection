@@ -1,3 +1,8 @@
+stock_list_small = ["A" ,"AA" ,"AAN" ,"AAP" ,"AAT" ,"AAV" ,"AB"
+            ,"ABB" ,"ABBV" ,"ABC" ,"ABEV" ,"ABG" ,"ABM" ,"ABR" ,"ABRN" ,"ABT"
+            ,"ABX" ,"ACC" ,"ACCO" ,"ACG" ,"ACH" ,"ACM" ,"ACN" ,"ACP" ,"ACRE"
+            ,"ACW" ,"ADC" ,"ADM" ,"ADPT" ,"ADS" ,"ADT" ,"ADX" ,"AEB" ,"AED"
+            ,"AEE" ,"AEG" ,"AEH" ,"AEK" ,"AEL" ,"AEM" ,"AEO" ,"AEP" ,"AER" ,"AES" ,"AET" ,"AF" ,"AFA" ,"AFB" ,"AFC" ,"AFG"]
 stock_list = ["A" ,"AA" ,"AAN" ,"AAP" ,"AAT" ,"AAV" ,"AB"
             ,"ABB" ,"ABBV" ,"ABC" ,"ABEV" ,"ABG" ,"ABM" ,"ABR" ,"ABRN" ,"ABT"
             ,"ABX" ,"ACC" ,"ACCO" ,"ACG" ,"ACH" ,"ACM" ,"ACN" ,"ACP" ,"ACRE"

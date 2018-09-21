@@ -49,6 +49,8 @@ class Stock(object):
             self.dayReturn = 0
         except ZeroDivisionError:
             self.dayReturn = 0
+        except ValueError:
+            self.dayReturn = 0
 
 
 class ConnectYQLHandler:
@@ -58,8 +60,8 @@ class ConnectYQLHandler:
     <p>A class which connects Yahoo public financial api and makes a report of
     daily ranking of % performance from givenan array of stock symbols.
     """
-    NUMBER_PER_ACCESS = 200
-    BASE_URL = "http://query.yahooapis.com/v1/public/yql"
+    NUMBER_PER_ACCESS = 5
+    BASE_URL = "https://www.worldtradingdata.com/api/v1/stock"
 
     stock_array = []
     threads = []
@@ -112,17 +114,15 @@ class ConnectYQLHandler:
 
         for idx in range(start_array_index, end_array_index):
             if itrCounter == 0:
-                url_symbol_names += "\"" + self.stock_array[idx].symbol + "\""
+                url_symbol_names += "" + self.stock_array[idx].symbol + ""
             else:
-                url_symbol_names += ",\"" + self.stock_array[idx].symbol + "\""
+                url_symbol_names += "," + self.stock_array[idx].symbol + ""
             itrCounter += 1
 
         query_args = {
-            'q': ('select symbol, Open, LastTradePriceOnly from yahoo.finance.quotes ' +
-                  'where symbol in ({0})').format(url_symbol_names),
-            'format': 'json',
-            'env': 'store://datatables.org/alltableswithkeys',
-            'callback': ''}
+            'symbol': url_symbol_names,
+            'api_token': '***'
+        }
 
         search_url = "{0}?{1}".format(self.BASE_URL, urllib.urlencode(query_args))
 
@@ -150,13 +150,14 @@ class ConnectYQLHandler:
 
         :param response_json_data:
         """
-        if response_json_data['query']['count']:
-            result_list = response_json_data['query']['results']['quote']
+        if response_json_data['data']:
+            result_list = response_json_data['data']
+
             for result in result_list:
                 for x in self.stock_array:
                     if x.symbol == result['symbol']:
-                        x.openPrice = result['Open']
-                        x.currentPrice = result['LastTradePriceOnly']
+                        x.openPrice = result['close_yesterday']
+                        x.currentPrice = result['price_open']
                         break
         else:
             print "NO RESPONSE"
@@ -218,4 +219,4 @@ class ConnectYQLHandler:
 
 
 if __name__ == "__main__":
-    ConnectYQLHandler(StockList.stock_list).main()
+    ConnectYQLHandler(StockList.stock_list_small).main()
